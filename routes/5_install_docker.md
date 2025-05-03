@@ -135,7 +135,7 @@ docker run -d --name adguardhome \
 Esto expone:
 
 * **Puerto 53** para resolver las solicitudes DNS.
-* **Puerto 5000** para acceder a la interfaz web de administración.
+* **Puerto 80** para acceder a la interfaz web de administración.
 
 #### Paso 4: Editar el archivo de configuración
 
@@ -146,7 +146,7 @@ sudo nano ~/dockers/adguard-home/confdir/AdGuardHome.yaml
 ```
 ![yaml](../images/5_yaml.png)
 
-Cambiar el parámetro `address` de `web_config` a `:5000`.
+Cambiar el parámetro `address` de `web_config` a `:80`.
 
 #### Paso 5: Reiniciar el contenedor para aplicar cambios
 
@@ -159,24 +159,24 @@ docker restart adguardhome
 Desde un navegador en la misma red, se accede a:
 
 ```
-http://<IP-del-servidor>:5000
+http://192.168.10.254
 ```
 
 Aquí se configura el usuario administrador, contraseñas y parámetros iniciales del servicio.
 
 
-# Implementación de Uptime Kuma para Monitoreo de Red
+## Implementación de Uptime Kuma para Monitoreo de Red
 
-## Proceso de Instalación y Configuración
+### Proceso de Instalación y Configuración
 
-### Preparación del entorno:
+#### Preparación del entorno:
 Se creó un directorio dedicado para almacenar los datos persistentes:
 
 ```bash
 mkdir -p /home/iti/dockers/uptimekuma
 ```
 
-### Despliegue del contenedor:
+#### Despliegue del contenedor:
 
 Se ejecutó el siguiente comando para iniciar el servicio:
 
@@ -187,23 +187,23 @@ sudo docker run -d --restart=always -p 3001:3001 \
 louislam/uptime-kuma:1
 ```
 
-### Parámetros clave:
+#### Parámetros clave:
 
 * `-p 3001:3001`: Asignación del puerto para acceso web
 * `-v /home/iti/dockers/uptimekuma:/app/data`: Persistencia de datos
 * `--restart=always`: Reinicio automático del servicio
 
-### Descarga e inicialización:
+#### Descarga e inicialización:
 
 * El sistema descargó automáticamente la imagen oficial .
 * Se completó la descarga de la imagen Docker.
 * El contenedor se inició correctamente con estado "healthy".
 
-### Verificación del servicio:
+#### Verificación del servicio:
 
 Mediante `docker ps` 
 
-### Configuración de red:
+#### Configuración de red:
 
 Se identificó la dirección Tailscale asignada con el comando:
 

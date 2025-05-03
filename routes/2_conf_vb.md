@@ -15,7 +15,7 @@ Todas se interconectan mediante una red en VirtualBox asignando recursos adecuad
 ### Router MikroTik:
 - **ISO:** MikroTik Cloud Hosted Router (CHR)
 - **CPU:** 1
-- **RAM:** 2048 MB
+- **RAM:** 1024 MB
 - **Red:**
     - **Adaptador 1:**
         - Red NAT
